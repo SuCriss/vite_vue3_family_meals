@@ -4,34 +4,26 @@
 </template>
 
 <script lang="ts">
-import {
-  toRefs,
-  reactive,
-  defineComponent,
-  toRaw,
-  getCurrentInstance,
-} from "vue";
+import { toRefs, reactive, defineComponent, toRaw, onMounted,getCurrentInstance } from "vue";
 import { useStore } from "vuex";
 import { Button } from "vant";
+
 export default defineComponent({
   name: "Home",
   components: {
     Button,
   },
   setup: () => {
+    const axios = getCurrentInstance()?.appContext.config.globalProperties.$axios;
+    onMounted(() => {
+      axios.getDemo({ phone: "17689475843", captcha: "2482" })
+        .then((res: any) => {
+          console.log(res);
+        }).catch((err:any)=>{
+          console.log(err)
+        });
+    });
     const store = useStore();
-    const axios =
-      getCurrentInstance()?.appContext.config.globalProperties.$axios;
-    console.log("axios", axios);
-    axios
-      .request({
-        url: "/classifies",
-        method: "get",
-        data: { id: "33894312" },
-      })
-      .then((res: any) => {
-        console.log("res", res);
-      });
     console.log(store.dispatch("setData", { id: 1 }));
     const state = reactive({
       msg: "Welcome to vite + vue3 Family meals",

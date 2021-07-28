@@ -30,5 +30,6 @@ export default createStore({
         hideLoading(context){
             context.commit('hideLoading',false)
         }
-    },modules:{}
+    },
+    modules:{}
 });
