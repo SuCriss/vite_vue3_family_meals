@@ -24,29 +24,18 @@ class Abstract{
                 params,
                 data,
                 responseType
-            }).then((res)=>{
-                // 200服务端业务正常
-                if(res.status===200){
-                    if(res.data.success){
-                        resolve({status:true,message:'success',data:res.data?.data,origin: res.data })
-                    }else{
-                        console.error('res.data', res.data)
-                        Toast.fail({
-                            message:res.data?.errorMessage || (`${url}请求失败`)
-                        });
-                        resolve({ status: false, message: res.data?.errorMessage || (url + '请求失败'), data: res.data?.data, origin: res.data });
-                    }
-                }else{
-                    resolve({ status: false, message: res.data?.errorMessage || (url + '请求失败'), data: null });
-                }
+            })
+            .then((res)=>{
+                resolve({status:true,message:"success",data:res}) 
             }).catch((err)=>{
-                console.error('err.data', err.data)
+                console.log('2324addsaada')
+                console.log(err)
                 const message = err?.data?.message || err?.message || (url + '请求失败');
                 Toast.fail({
                     message:message
                 });
                 // eslint-disable-next-line
-                reject({ status: false, message, data: null});
+                reject({ status: false, message, data: err});
             });
         });
 

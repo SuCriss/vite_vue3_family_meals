@@ -1,5 +1,7 @@
 <template>
-  <Loading v-show="LOADING" />
+  <div class="loadingStyle" v-show="LOADING">
+    <Loading color="#1989fa" class="loading" vertical>加载中...</Loading>
+  </div>
   <router-view></router-view>
 </template>
 
@@ -31,6 +33,18 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
+}
+.loadingStyle{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:121;
+    display: table-cell;
+    margin: auto;
+    vertical-align: middle;
 }
 </style>

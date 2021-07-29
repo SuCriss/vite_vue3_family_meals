@@ -13,6 +13,7 @@
     "paths": {
       "@": ["src/*"],
       "@/store/*": ["src/store/*"],
+      "@/assets/*": ["src/assets/*"],
       "@/http/*": ["src/http/*"],
       "@/plugins/*": ["src/plugins/*"],
     },

@@ -18,6 +18,7 @@ export interface AxiosResponse {
     headers:any;
     request?:any;
     status:number;
+    code?:number;
     statusText:string;
     config:AxiosRequest;
 }
@@ -26,7 +27,6 @@ export interface CustomResponse {
     readonly status:boolean;
     readonly message:string;
     data:any;
-    origin?:any;
 }
 
 export interface GetDemo {
